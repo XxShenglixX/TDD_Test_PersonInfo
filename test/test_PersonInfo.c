@@ -10,18 +10,11 @@ void tearDown(void)
 {
 }
 
-void test_setAge_given_negative1_should_return0()
+
+/*Testing for age only*/
+void test_setAge_given_negative1_should_return0() 
 {
 	PersonInfo test = {.age = -1};
-
-	int indicator;
-	indicator = setAge(&test,test.age);
-	TEST_ASSERT_EQUAL(0,indicator);
-}
-
-void test_setAge_given_199_should_return0()
-{
-	PersonInfo test = {.age = 199};
 
 	int indicator;
 	indicator = setAge(&test,test.age);
@@ -52,7 +45,7 @@ void test_setAge_given_0_should_return1()
 
 	int indicator;
 	indicator = setAge(&test,test.age);
-	TEST_ASSERT_EQUAL(1,indicator);
+	TEST_ASSERT_EQUAL(0,indicator);
 }
 
 void test_setAge_given_99_should_return1()
@@ -64,7 +57,8 @@ void test_setAge_given_99_should_return1()
 	TEST_ASSERT_EQUAL(1,indicator);
 }
 
-void test_setHeight_given_negative_0point01should_return0()
+
+void test_setHeight_given_negative_0point01should_return0() 
 {
 	PersonInfo test = {.height = -0.01};
 
@@ -82,19 +76,18 @@ void test_setHeight_given_3point001_should_return0()
 	TEST_ASSERT_EQUAL(0,indicator);
 }
 
-void test_setHeight_given_100_should_return0()
+void test_setHeight_given_0_should_return1()
 {
-	PersonInfo test = {.height = 100};
+	PersonInfo test = {.height = 0};
 
 	int indicator;
 	indicator = setHeight(&test,test.height);
 	TEST_ASSERT_EQUAL(0,indicator);
 }
 
-
-void test_setHeight_given_0_should_return1()
+void test_setHeight_given_3m_should_return1() 
 {
-	PersonInfo test = {.height = 0};
+	PersonInfo test = {.height = 3};
 
 	int indicator;
 	indicator = setHeight(&test,test.height);
@@ -110,27 +103,10 @@ void test_setHeight_given_1point7_should_return1()
 	TEST_ASSERT_EQUAL(1,indicator);
 }
 
-void test_setHeight_given_3m_should_return1()
-{
-	PersonInfo test = {.height = 3};
-
-	int indicator;
-	indicator = setHeight(&test,test.height);
-	TEST_ASSERT_EQUAL(1,indicator);
-}
 
 void test_setTelephone_given_00012345_should_return0()
 {
 	PersonInfo test = {.telephone = 00012345};
-
-	int indicator;
-	indicator = setTelephone(&test,test.telephone);
-	TEST_ASSERT_EQUAL(0,indicator);
-}
-
-void test_setTelephone_given_123456789_should_return0()
-{
-	PersonInfo test = {.telephone = 123456789};
 
 	int indicator;
 	indicator = setTelephone(&test,test.telephone);
@@ -155,11 +131,186 @@ void test_setTelephone_given_10023456_should_return1()
 	TEST_ASSERT_EQUAL(1,indicator);
 }
 
+ 
+
 void test_setFirstName_given_emptystring()
 {
-	PersonInfo test = {.firstName = {}};
+	PersonInfo test = {.firstName = NULL};
 
 	int indicator;
-	indicator = setFirstName(&test,);
+	indicator = setFirstName(&test,NULL);
+	TEST_ASSERT_EQUAL(0,indicator);
+}
+
+void test_setFirstName_given_B3njamin()
+{
+	PersonInfo test = {.firstName = "B3njamin"};
+
+	int indicator;
+	indicator = setFirstName(&test,&test.firstName);
+	TEST_ASSERT_EQUAL(0,indicator);
+}
+
+void test_setFirstName_given_blank_Benjamin()
+{
+	PersonInfo test = {.firstName = " Benjamin"};
+
+	int indicator;
+	indicator = setFirstName(&test,&test.firstName);
+	TEST_ASSERT_EQUAL(0,indicator);
+}
+
+void test_setFirstName_given_alliance_Benjamin()
+{
+	PersonInfo test = {.firstName = "@Benjamin"};
+
+	int indicator;
+	indicator = setFirstName(&test,&test.firstName);
+	TEST_ASSERT_EQUAL(0,indicator);
+}
+
+void test_setFirstName_given_Aaron_Anthony_Benjamin_Bernard_27characters_name()
+{																			    
+	PersonInfo test = {.firstName = "AaronAnthonyBenjaminBernard"};
+
+	int indicator;
+	indicator = setFirstName(&test,&test.firstName);
+	TEST_ASSERT_EQUAL(0,indicator);
+}
+
+void test_setFirstName_given_Benjamin()
+{
+	PersonInfo test = {.firstName = "Benjamin"};
+
+	int indicator;
+	indicator = setFirstName(&test,&test.firstName);
 	TEST_ASSERT_EQUAL(1,indicator);
 }
+
+void test_setFirstName_given_Benjamin_blank_Ooi()
+{
+	PersonInfo test = {.firstName = "Benjamin Ooi"};
+
+	int indicator;
+	indicator = setFirstName(&test,&test.firstName);
+	TEST_ASSERT_EQUAL(1,indicator);
+}
+
+/*Testing for last names only*/
+void test_setLastName_given_emptystring()//Test empty string or NULL , expect 0 , name must not be empty
+{
+	PersonInfo test = {.lastName = NULL};
+
+	int indicator;
+	indicator = setLastName(&test,NULL);
+	TEST_ASSERT_EQUAL(0,indicator);
+}
+
+void test_setLastName_given_B3ng()//Test B3ng , expect 0 , contains digit in the name
+{
+	PersonInfo test = {.lastName = "B3njamin"};
+
+	int indicator;
+	indicator = setLastName(&test,&test.lastName);
+	TEST_ASSERT_EQUAL(0,indicator);
+}
+
+void test_setLastName_given_blank_Huat()//Test (space)Huat , expect 0 , name starting with space,
+{	
+	PersonInfo test = {.lastName = " Huat"};
+
+	int indicator;
+	indicator = setLastName(&test,&test.lastName);
+	TEST_ASSERT_EQUAL(0,indicator);
+}
+
+void test_setLastName_given_slash_Hui()//Test /Hui , expect 0 , not an alphabet character present
+{
+	PersonInfo test = {.lastName = "/Hui"};
+
+	int indicator;
+	indicator = setLastName(&test,&test.lastName);
+	TEST_ASSERT_EQUAL(0,indicator);
+}
+
+void test_setLastName_given_abcdefghijklmnopqrstuvwxyz_26characters_name()//Test abcdefghijklmnopqrstuvwxyz , expect 0, maximum of 20characters in a name
+{																			    
+	PersonInfo test = {.lastName = "abcdefghijklmnopqrstuvwxyz"};
+
+	int indicator;
+	indicator = setLastName(&test,&test.lastName);
+	TEST_ASSERT_EQUAL(0,indicator);
+}
+
+void test_setLastName_given_Beng()//Test Beng , expect 1 , valid name
+{
+	PersonInfo test = {.lastName = "Beng"};
+
+	int indicator;
+	indicator = setLastName(&test,&test.lastName);
+	TEST_ASSERT_EQUAL(1,indicator);
+}
+
+void test_setLastName_given_Ah_blank_Huat()//Test Ah Huat , expect 1 , valid name spaces between two names are allowed
+{
+	PersonInfo test = {.lastName = "Ah Huat"};
+
+	int indicator;
+	indicator = setLastName(&test,&test.lastName);
+	TEST_ASSERT_EQUAL(1,indicator);
+}
+
+
+
+
+
+void test_setFirstName_setLastName_given_Tan__Ah_B3ng()
+{
+	PersonInfo test = {"Tan","Ah B3ng"};
+
+	int indicator,indicator_lastName;
+	indicator = setFirstName(&test,&test.firstName);
+	indicator_lastName = setLastName(&test,&test.lastName);
+	TEST_ASSERT_EQUAL(0,(indicator && indicator_lastName) );
+}
+
+void test_setFirstName_setLastName_given_Tan__Ah_Be_symbol_g()
+{
+	PersonInfo test = {"Tan","Ah Be|\|g"};
+
+	int indicator,indicator_lastName;
+	indicator = setFirstName(&test,&test.firstName);
+	indicator_lastName = setLastName(&test,&test.lastName);
+	TEST_ASSERT_EQUAL(0,(indicator && indicator_lastName) );
+}
+
+void test_setFirstName_setLastName_given_Tan__AhBang_AhBeng_AhBing_Ahh_21_characters_name()
+{																						   
+	PersonInfo test = {"Tan","AhBangAhBengAhBingAhh"};
+
+	int indicator,indicator_lastName;
+	indicator = setFirstName(&test,&test.firstName);
+	indicator_lastName = setLastName(&test,&test.lastName);
+	TEST_ASSERT_EQUAL(0,(indicator && indicator_lastName) );
+}
+
+void test_setFirstName_setLastName_given_Tan__null()
+{
+	PersonInfo test = {"Tan",NULL};
+
+	int indicator,indicator_lastName;
+	indicator = setFirstName(&test,&test.firstName);
+	indicator_lastName = setLastName(&test,NULL);
+	TEST_ASSERT_EQUAL(0,(indicator && indicator_lastName) );
+}
+
+void test_setFirstName_setLastName_given_Tan__Ah_Beng()
+{
+	PersonInfo test = {"Tan","Ah Beng"};
+
+	int indicator,indicator_lastName;
+	indicator = setFirstName(&test,&test.firstName);
+	indicator_lastName = setLastName(&test,&test.lastName);
+	TEST_ASSERT_EQUAL(1,(indicator && indicator_lastName) );
+}
+
