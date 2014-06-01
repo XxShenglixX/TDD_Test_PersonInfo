@@ -4,74 +4,154 @@
   :file: test_PersonInfo.c
 :successes:
 - :test: test_setAge_given_negative1_should_return0
-  :line: 13
-  :message: ''
-- :test: test_setAge_given_199_should_return0
-  :line: 22
+  :line: 15
   :message: ''
 - :test: test_setAge_given_131_should_return0
-  :line: 31
+  :line: 24
   :message: ''
 - :test: test_setAge_given_130_should_return1
-  :line: 40
+  :line: 33
   :message: ''
 - :test: test_setAge_given_0_should_return1
-  :line: 49
+  :line: 42
   :message: ''
 - :test: test_setAge_given_99_should_return1
-  :line: 58
+  :line: 51
   :message: ''
 - :test: test_setHeight_given_negative_0point01should_return0
-  :line: 67
+  :line: 61
   :message: ''
 - :test: test_setHeight_given_3point001_should_return0
-  :line: 76
-  :message: ''
-- :test: test_setHeight_given_100_should_return0
-  :line: 85
+  :line: 70
   :message: ''
 - :test: test_setHeight_given_0_should_return1
-  :line: 95
+  :line: 79
+  :message: ''
+- :test: test_setHeight_given_3_should_return1
+  :line: 88
   :message: ''
 - :test: test_setHeight_given_1point7_should_return1
-  :line: 104
-  :message: ''
-- :test: test_setHeight_given_3m_should_return1
-  :line: 113
+  :line: 97
   :message: ''
 - :test: test_setTelephone_given_00012345_should_return0
-  :line: 122
-  :message: ''
-- :test: test_setTelephone_given_123456789_should_return0
-  :line: 131
+  :line: 107
   :message: ''
 - :test: test_setTelephone_given_100000000_should_return0
-  :line: 140
+  :line: 116
   :message: ''
-- :test: test_setTelephone_given10023456_should_return1
-  :line: 149
+- :test: test_setTelephone_given_10023456_should_return1
+  :line: 125
+  :message: ''
+- :test: test_setFirstName_given_emptystring
+  :line: 136
+  :message: ''
+- :test: test_setFirstName_given_B3njamin
+  :line: 145
+  :message: ''
+- :test: test_setFirstName_given_blank_Benjamin
+  :line: 154
+  :message: ''
+- :test: test_setFirstName_given_alliance_Benjamin
+  :line: 163
+  :message: ''
+- :test: test_setFirstName_given_Aaron_Anthony_Benjamin_Bernard_27characters_name
+  :line: 172
+  :message: ''
+- :test: test_setFirstName_given_Benjamin
+  :line: 181
+  :message: ''
+- :test: test_setFirstName_given_Benjamin_blank_Ooi
+  :line: 190
+  :message: ''
+- :test: test_setLastName_given_emptystring
+  :line: 200
+  :message: ''
+- :test: test_setLastName_given_B3ng
+  :line: 209
+  :message: ''
+- :test: test_setLastName_given_blank_Huat
+  :line: 218
+  :message: ''
+- :test: test_setLastName_given_slash_Hui
+  :line: 227
+  :message: ''
+- :test: test_setLastName_given_abcdefghijklmnopqrstuvwxyz_26characters_name
+  :line: 236
+  :message: ''
+- :test: test_setLastName_given_Beng
+  :line: 245
+  :message: ''
+- :test: test_setLastName_given_Ah_blank_Huat
+  :line: 254
+  :message: ''
+- :test: test_setFirstName_setLastName_given_Tan__Ah_B3ng
+  :line: 267
+  :message: ''
+- :test: test_setFirstName_setLastName_given_Tan__Ah_Be_symbol_g
+  :line: 277
+  :message: ''
+- :test: test_setFirstName_setLastName_given_Tan__AhBang_AhBeng_AhBing_Ahh_21_characters_name
+  :line: 287
+  :message: ''
+- :test: test_setFirstName_setLastName_given_Tan__null
+  :line: 298
+  :message: ''
+- :test: test_setFirstName_setLastName_given_T_alliance_n__Ah_Beng
+  :line: 314
+  :message: ''
+- :test: test_setFirstName_setLastName_given_T8n__Ah_Beng
+  :line: 324
+  :message: ''
+- :test: test_setFirstName_setLastName_given_null__Ah_Beng
+  :line: 334
+  :message: ''
+- :test: test_setFirstName_setLastName_given_TanTanTanTanTanTanTanTan__Ah_Beng
+  :line: 344
+  :message: ''
+- :test: test_setFirstName_setLastName_given_Tan__Ah_Beng
+  :line: 353
   :message: ''
 :failures: []
 :ignores: []
 :counts:
-  :total: 16
-  :passed: 16
+  :total: 36
+  :passed: 36
   :failed: 0
   :ignored: 0
 :stdout:
 - You have entered an invalid age that is -1 years old !
-- You have entered an invalid age that is 199 years old !
 - You have entered an invalid age that is 131 years old !
 - You are 130 years old !
-- You are 0 years old !
+- You have entered an invalid age that is 0 years old !
 - You are 99 years old !
 - You have entered an invalid height that is -0.010000 meters !
 - You have entered an invalid height that is 3.001000 meters !
-- You have entered an invalid height that is 100.000000 meters !
-- You are 0.000000 meters !
-- You are 1.700000 meters !
+- You have entered an invalid height that is 0.000000 meters !
 - You are 3.000000 meters !
+- You are 1.700000 meters !
 - You have entered an invalid telephone number which starts from zero !
 - You have entered an invalid telephone number which has more than 8 digits !
-- You have entered an invalid telephone number which has more than 8 digits !
 - Your have entered 10023456 as your telephone number !
+- No first name detected !
+- You have number/numbers in your first name @_@ ???
+- You can't have your first name starting with a blank
+- Invalid character found in your first name!
+- Insufficient space to allocate your lengthy first name.I'm sorry !
+- 'Hello Benjamin '
+- 'Hello Benjamin Ooi '
+- No last name detected !
+- You have number/numbers in your last name @_@ ???
+- You can't have your last name starting with a blank
+- Invalid character found in your last name !
+- Insufficient space to allocate your lengthy last name.I'm sorry !
+- Beng !
+- Ah Huat !
+- Hello Tan You have number/numbers in your last name @_@ ???
+- Hello Tan Invalid character found in your last name !
+- Hello Tan Insufficient space to allocate your lengthy last name.I'm sorry !
+- Hello Tan No last name detected !
+- Invalid character found in your first name!Ah Beng !
+- You have number/numbers in your first name @_@ ???Ah Beng !
+- No first name detected !Ah Beng !
+- Insufficient space to allocate your lengthy first name.I'm sorry !Ah Beng !
+- Hello Tan Ah Beng !
